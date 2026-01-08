@@ -35,21 +35,6 @@
             },
         }
     </script>
-
-<script>
-function openProduct(card){
-    const product = {
-        brand: card.dataset.brand,
-        title: card.dataset.title,
-        price: card.dataset.price,
-        image: card.dataset.image
-    };
-
-    localStorage.setItem("selectedProduct", JSON.stringify(product));
-    window.location.href = "product-detail.html";
-}
-</script>
-
 <style>
         /* Custom scrollbar hiding */
         .no-scrollbar::-webkit-scrollbar {
@@ -235,9 +220,8 @@ function openProduct(card){
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover/card:scale-110" data-alt="Fenty Beauty Gloss Bomb lip gloss" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBg3ScpXOxrlZoml0HfxICcNn-7v9czvMfyxfO-5cTSzs0NpiU3UEYujq8lJh7GRtmBGGpQr6MW1KTMmno3iSvtlTkCI5c1uVaRoVoIk5wdxTIjWm-DoH_VITjqAegeFH015Mqzr9fZaW--0vgwCMv3saxgm0Fci16z5LvX1o54CgAbwjzaJbPZfgvmG5gbL1xC4TODIPx0B898Atje5WwZUFgHeIrPdt2_8_DyosS8DVQSz5e1lAkFad5YL5URJrHiUA-dstQ3wwc");'></div>
 <!-- Quick Add Overlay (Desktop) -->
 <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover/card:translate-y-0 transition-transform duration-300 hidden md:block">
-<button class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors">
-                                    Quick Add
-                                </button>
+<button  class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors"onclick="goToProduct()" >
+                Quick Add                                </button>
 </div>
 </div>
 <div class="flex flex-col gap-1 mt-1">
@@ -255,16 +239,15 @@ function openProduct(card){
 </div>
 </div>
 <!-- Mobile Quick Add -->
-<button class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
+<button onclick="goToProduct()"  class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
 </div>
 <!-- Card 2 -->
 <div class="min-w-[240px] md:min-w-[280px] bg-white dark:bg-background-dark-card rounded-lg flex flex-col gap-3 group/card relative">
 <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-gray-100">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover/card:scale-110" data-alt="Rare Beauty liquid blush bottle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8v4GOMX0pppnQynWqvlxhBVF3w6RaFEHidcngfFpPeA2PqtRwISrf2166ZzFlvWAzEy-L8LxwInYI27-6zpe4LwpGB55Wwf3ajpp8NiXKPBtvCg5RAchf4g8Iqg8UFd8e46IZI3dxT1bgOT67pQ4pcAuiZkYSkJn3JRTPjzQMEU1-m6jFSiblRdVxmaqrAsh9BtTxMrrv1s6rSgqCL8wzHa6fRuDsjvvt6Ke7_KL2rtr90cmJ_F-1L6OzGkOxWB_fgfsCqc2sAtg");'></div>
 <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover/card:translate-y-0 transition-transform duration-300 hidden md:block">
-<button class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors">
-                                    Quick Add
-                                </button>
+<button onclick="goToProduct()"  class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors"onclick="goToProduct()" >
+                Quick Add                                </button>
 </div>
 </div>
 <div class="flex flex-col gap-1 mt-1">
@@ -281,16 +264,15 @@ function openProduct(card){
 </div>
 </div>
 </div>
-<button class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
+<button onclick="goToProduct()"  class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
 </div>
 <!-- Card 3 -->
 <div class="min-w-[240px] md:min-w-[280px] bg-white dark:bg-background-dark-card rounded-lg flex flex-col gap-3 group/card relative">
 <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-gray-100">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover/card:scale-110" data-alt="Drunk Elephant face cream jar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNpScbfAr-tuODDj5jaXz6Cl0iRe-N-UQcf23n92QCKvZnJLo9ib2EHn7RkRN8CruUWjBQm3kgBPgo2mVSAubz-3lS83bsbEENk3GUFAYO8LQMTmjacJj4j7B3Y8CzRaiDrBQlsuzJ3NUHqcc9hRX1GIYTEF24Kiu9CfKc79IzB0fijMS6lfQCOQu4iUSmQeE_2gCbEEf7jJW4a6A3yyAYO-RyO68PwqQ_eSPwQalREVByPojTf62hyNQl-ZtFpXUMqkpsddxRX4k");'></div>
 <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover/card:translate-y-0 transition-transform duration-300 hidden md:block">
-<button class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors">
-                                    Quick Add
-                                </button>
+<button onclick="goToProduct()"  class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors"onclick="goToProduct()" >
+                Quick Add                                </button>
 </div>
 </div>
 <div class="flex flex-col gap-1 mt-1">
@@ -307,7 +289,7 @@ function openProduct(card){
 </div>
 </div>
 </div>
-<button class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
+<button  onclick="goToProduct()"  class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
 </div>
 <!-- Card 4 -->
 <div class="min-w-[240px] md:min-w-[280px] bg-white dark:bg-background-dark-card rounded-lg flex flex-col gap-3 group/card relative">
@@ -315,9 +297,8 @@ function openProduct(card){
 <span class="absolute top-2 left-2 bg-white/80 backdrop-blur text-black text-[10px] font-bold px-2 py-1 rounded z-10">NEW</span>
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover/card:scale-110" data-alt="Sol de Janeiro yellow cream jar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAT0qTCk9QO1r2NWEC1Eh5eIwM9oHSGzUEYh7j0U5_lOvbQDeZSG8xdcgq8BbvEwTUFMwPn9OAh1Ss0ej_ekWGG654kzDXb5ClFMxTn957LR6DV0_EJnUKlfdgztoSk37Y6yoIk3WT-I_LsCsOlKgDRoOVwirLFA4nhhxdTCd4NLKToWCq3rpBaHjVzFwqV4VuZxRxB2MUe746G7jiLmP6qgTRyuaMebfGljr7fYtiXZTGAZPJmGsTtlVdnZYPeUMunKh2XlSqdPNQ");'></div>
 <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover/card:translate-y-0 transition-transform duration-300 hidden md:block">
-<button class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors">
-                                    Quick Add
-                                </button>
+<button  onclick="goToProduct()"  class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors"onclick="goToProduct()" >
+                Quick Add                                </button>
 </div>
 </div>
 <div class="flex flex-col gap-1 mt-1">
@@ -334,16 +315,15 @@ function openProduct(card){
 </div>
 </div>
 </div>
-<button class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
+<button onclick="goToProduct()"  class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
 </div>
 <!-- Card 5 -->
 <div class="min-w-[240px] md:min-w-[280px] bg-white dark:bg-background-dark-card rounded-lg flex flex-col gap-3 group/card relative">
 <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-gray-100">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover/card:scale-110" data-alt="Dior perfume bottle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsNOPPpOyFFVlE8NxFkkTQ24_3ZIBAsURjrj6BEk1ozisE3Av4jTMqHH6gLyMt709liTjKIiwvSCxtBA789RXa5Fudk57sxDoFU6ZEivaWMOgzQboKk03kDuXSoPJNLeJje2Q7fXm9ubdILaX_2aVpPzjPYio1a26IFU3TqnfyZr0fJ4YFkahKFPu2tI2ADN0ApeQ9M9f7fgtADVjhtbX-TUEWcCoNzs7EhKHBVFPyKGOwJayxLndFpZYoWTghonHHuk8d6mJU_MU");'></div>
 <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover/card:translate-y-0 transition-transform duration-300 hidden md:block">
-<button class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors">
-                                    Quick Add
-                                </button>
+<button onclick="goToProduct()"  class="w-full bg-white/90 dark:bg-black/90 backdrop-blur text-black dark:text-white font-bold text-sm py-3 rounded-lg shadow-lg hover:bg-primary hover:text-white transition-colors"onclick="goToProduct()" >
+                Quick Add                                </button>
 </div>
 </div>
 <div class="flex flex-col gap-1 mt-1">
@@ -360,7 +340,7 @@ function openProduct(card){
 </div>
 </div>
 </div>
-<button class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
+<button onclick="goToProduct()"  class="md:hidden mt-2 w-full border border-gray-300 dark:border-gray-600 text-black dark:text-white font-bold text-sm py-2 rounded-lg">Quick Add</button>
 </div>
 </div>
 <!-- Gradient Fade for Scroll indication -->
@@ -475,4 +455,10 @@ function openProduct(card){
 </div>
 </div>
 </footer>
+<script>
+function goToProduct(){
+    window.location.href = "Product-detail.html";
+}
+</script>
+
 </body></html>
