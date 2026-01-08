@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>City carnation  - Product Listing</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec131e",
+                        "background-light": "#ffffff", /* Using pure white as per plan */
+                        "background-off-white": "#f8f6f6",
+                        "background-dark": "#221011",
+                        "text-main": "#1b0d0e",
+                        "text-muted": "#6b7280",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-filled {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for filters */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-off-white dark:bg-background-dark font-display text-text-main dark:text-white antialiased selection:bg-primary/20">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-[#1a0b0c] border-b border-gray-100 dark:border-white/10 shadow-sm">
+<div class="px-6 lg:px-12 flex items-center justify-between h-20 gap-8">
+<!-- Logo Section -->
+<div class="flex items-center gap-2 shrink-0">
+<a class="flex items-center gap-2 group" href="./Homepage.html">
+<span class="text-3xl font-black tracking-widest text-black dark:text-white group-hover:text-primary transition-colors duration-300">City carnation </span>
+</a>
+</div>
+<!-- Search Bar (Desktop) -->
+<div class="hidden md:flex flex-1 max-w-2xl">
+<div class="relative w-full group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3 rounded-full bg-background-off-white dark:bg-white/5 border-transparent focus:border-primary focus:ring-0 focus:bg-white dark:focus:bg-black transition-all duration-300 text-sm placeholder-gray-500 text-black dark:text-white font-medium" placeholder="Search for product, brand..." type="text"/>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-6 shrink-0">
+<nav class="hidden lg:flex items-center gap-6 text-sm font-bold tracking-wide">
+<a class="hover:text-primary transition-colors" href="./Product-listing.html">New</a>
+<a class="hover:text-primary transition-colors" href="./Product-listing.html">Brands</a>
+<a class="hover:text-primary transition-colors text-primary" href="./Product-listing.html">Makeup</a>
+<a class="hover:text-primary transition-colors" href="./Product-listing.html">Skincare</a>
+<a class="hover:text-primary transition-colors" href="./Product-listing.html">Sale</a>
+</nav>
+<div class="h-6 w-px bg-gray-200 dark:bg-white/10 hidden lg:block"></div>
+<div class="flex items-center gap-3">
+<button class="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</button>
+<button class="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">shopping_bag</span>
+<span class="absolute top-1 right-1 h-2.5 w-2.5 bg-primary rounded-full border-2 border-white dark:border-black"></span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<main class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-8 flex flex-col lg:flex-row gap-10">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 flex-shrink-0 hidden lg:block">
+<!-- Breadcrumbs in sidebar for structure -->
+<div class="flex flex-wrap gap-2 text-xs font-medium mb-6 text-gray-500 dark:text-gray-400">
+<a class="hover:text-primary hover:underline" href="./Homepage.html">Home</a>
+<span>/</span>
+<a class="hover:text-primary hover:underline" href="./Product-listing.html">Makeup</a>
+<span>/</span>
+<span class="text-black dark:text-white font-bold">Face</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-lg font-bold mb-4 px-2">Filters</h3>
+<!-- Category Accordion -->
+<details class="group py-3 border-b border-gray-200 dark:border-white/10" open="">
+<summary class="flex cursor-pointer items-center justify-between text-sm font-bold select-none list-none outline-none">
+<span>Category</span>
+<span class="material-symbols-outlined text-gray-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
+</summary>
+<div class="mt-4 space-y-3 pl-1">
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Foundation (320)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input checked="" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Concealer (145)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Powder (89)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Primer (64)</span>
+</label>
+</div>
+</details>
+<!-- Brand Accordion -->
+<details class="group py-3 border-b border-gray-200 dark:border-white/10" open="">
+<summary class="flex cursor-pointer items-center justify-between text-sm font-bold select-none list-none outline-none">
+<span>Brand</span>
+<span class="material-symbols-outlined text-gray-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
+</summary>
+<div class="mt-4 space-y-3 pl-1">
+<!-- Mini Search for brands -->
+<div class="relative mb-3">
+<span class="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">search</span>
+</span>
+<input class="w-full pl-8 pr-3 py-1.5 text-xs bg-gray-100 dark:bg-white/10 rounded border-none focus:ring-1 focus:ring-primary placeholder-gray-500" placeholder="Search brand" type="text"/>
+</div>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Fenty Beauty</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Rare Beauty</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Charlotte Tilbury</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Dior</span>
+</label>
+</div>
+</details>
+<!-- Price Accordion -->
+<details class="group py-3 border-b border-gray-200 dark:border-white/10">
+<summary class="flex cursor-pointer items-center justify-between text-sm font-bold select-none list-none outline-none">
+<span>Price Range</span>
+<span class="material-symbols-outlined text-gray-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
+</summary>
+<div class="mt-4 px-1">
+<input class="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary" max="200" min="0" type="range"/>
+<div class="flex justify-between mt-2 text-xs font-medium text-gray-600 dark:text-gray-400">
+<span>$0</span>
+<span>$200+</span>
+</div>
+</div>
+</details>
+<!-- Rating Accordion -->
+<details class="group py-3 border-b border-gray-200 dark:border-white/10">
+<summary class="flex cursor-pointer items-center justify-between text-sm font-bold select-none list-none outline-none">
+<span>Rating</span>
+<span class="material-symbols-outlined text-gray-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
+</summary>
+<div class="mt-4 space-y-3 pl-1">
+<label class="flex items-center gap-3 cursor-pointer group/item">
+<input class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary/20 cursor-pointer" type="checkbox"/>
+<div class="flex text-yellow-500">
+<span class="material-symbols-filled text-[18px]">star</span>
+<span class="material-symbols-filled text-[18px]">star</span>
+<span class="material-symbols-filled text-[18px]">star</span>
+<span class="material-symbols-filled text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+</div>
+<span class="text-xs text-gray-500">&amp; Up</span>
+</label>
+</div>
+</details>
+</div>
+</aside>
+<!-- Product Grid Area -->
+<div class="flex-1 min-w-0">
+<!-- Mobile Filter Toggle & Title -->
+<div class="lg:hidden mb-6 flex justify-between items-end">
+<div>
+<h1 class="text-3xl font-black mb-1">Face Makeup</h1>
+<p class="text-sm text-gray-500">1,240 results</p>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 rounded-lg font-bold text-sm shadow-sm">
+<span class="material-symbols-outlined text-lg">tune</span>
+                    Filter
+                </button>
+</div>
+<!-- Desktop Toolbar -->
+<div class="hidden lg:flex items-center justify-between mb-8 pb-4 border-b border-gray-200 dark:border-white/10">
+<div>
+<h1 class="text-3xl md:text-4xl font-black tracking-tight text-black dark:text-white mb-2">Face Makeup</h1>
+<p class="text-base text-gray-500 dark:text-gray-400">Showing 1,240 results for your search</p>
+</div>
+<div class="flex items-center gap-4">
+<label class="flex items-center gap-2">
+<span class="text-sm font-bold text-gray-600 dark:text-gray-300 whitespace-nowrap">Sort by:</span>
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-2.5 bg-transparent border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-semibold focus:border-primary focus:ring-1 focus:ring-primary cursor-pointer hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+<option>Top Rated</option>
+<option>Newest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none flex items-center">
+<span class="material-symbols-outlined text-gray-500 text-lg">expand_more</span>
+</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Products Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10">
+<!-- Product Card 1 -->
+<div class="group flex flex-col h-full bg-white dark:bg-[#1a0b0c] rounded-xl hover:shadow-xl transition-all duration-300 ease-in-out border border-transparent hover:border-gray-100 dark:hover:border-white/5 p-3">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 dark:bg-white/5 mb-4">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Bottle of liquid foundation with pump dispenser" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdWICC1GH9YkIPkqMZZi1M13uVTKsSa2Prd6mq5olfqZJ-nzpy7R7BwVU4WbNIjzPDtuk2xcVHDH4f5LMocCu8HkEnZndFrP-haoFB7Z0D1CASBeF7n7ZX-w77DMwob8TI6_F4Lh1Sr6-alJ4INLfkVAm_9LZ1YUhl1N5g3eVfvmN8yFZ80ut_nqwZiRNeWKpKochOPCMkX5L6A-YD6-amJg75UL3Lsu3XX9_B_RvKkD9Cn-O4UL-giDWNKGp5XrsJbVuz8pOoWko"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center">
+<button class="bg-white/95 text-black text-xs font-bold uppercase tracking-wider py-2.5 px-6 rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors w-full">Quick View</button>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/80 dark:bg-black/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:text-primary">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm">Best Seller</span>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<p class="text-xs font-bold uppercase tracking-wider text-gray-500">Fenty Beauty</p>
+<h3 class="font-bold text-base leading-tight group-hover:text-primary transition-colors">Pro Filt'r Soft Matte Longwear Foundation</h3>
+<div class="flex items-center gap-1 my-1">
+<div class="flex text-black dark:text-white">
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-outlined text-[14px]">star_half</span>
+</div>
+<span class="text-xs text-gray-500 font-medium">(2.4k)</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-black">$39.00</span>
+<button class="bg-primary hover:bg-red-700 text-white p-2 rounded-lg transition-colors shadow-sm shadow-red-200 dark:shadow-none">
+<span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group flex flex-col h-full bg-white dark:bg-[#1a0b0c] rounded-xl hover:shadow-xl transition-all duration-300 ease-in-out border border-transparent hover:border-gray-100 dark:hover:border-white/5 p-3">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 dark:bg-white/5 mb-4">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Pink bottle of perfume with elegant design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXi6VcZbHwf4gqxArkqFQSoQJy7M4ypGQ8lmdvrtaqQIsKIYZGRBV2WOdQb3LQszq2_tIITvDyGwSMWRatNP27uRjiHjcQ60celivsGsIhYK7Sk-vrCTVhyZ7kNQ88-XyejC7xrXMmTwxtfSgfSLU6JjnDES2MwCmy-09m-zyuFkO9OxY6_8diafDuKM_uiQa_7lqJ9930CDDxa8OvuuAcIBvr1BvMwXSqzmzevCeXbQwOqIwEpGZgi3rjRDkZ-sYOwDcTbA42c4A"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center">
+<button class="bg-white/95 text-black text-xs font-bold uppercase tracking-wider py-2.5 px-6 rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors w-full">Quick View</button>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/80 dark:bg-black/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:text-primary">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm">New</span>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<p class="text-xs font-bold uppercase tracking-wider text-gray-500">Dior</p>
+<h3 class="font-bold text-base leading-tight group-hover:text-primary transition-colors">Miss Dior Blooming Bouquet</h3>
+<div class="flex items-center gap-1 my-1">
+<div class="flex text-black dark:text-white">
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+</div>
+<span class="text-xs text-gray-500 font-medium">(540)</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-black">$110.00</span>
+<button class="bg-primary hover:bg-red-700 text-white p-2 rounded-lg transition-colors shadow-sm shadow-red-200 dark:shadow-none">
+<span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group flex flex-col h-full bg-white dark:bg-[#1a0b0c] rounded-xl hover:shadow-xl transition-all duration-300 ease-in-out border border-transparent hover:border-gray-100 dark:hover:border-white/5 p-3">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 dark:bg-white/5 mb-4">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Dropper bottle of skin serum on minimal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOs2To-trfOujLWmVYk_tGba4EbOqK0Lq_yLuhTubE3hO6dpjTtKx14pmIOFWuIT1scHkm4aBCwSkibznqpUEuh_ndzU51_a5OQ1T8_QUxfwAjZ9-tRjoq3XiSe7DdKEmHnXrE4HR3fgLCEBH7vhCXu0a830ApUJAdiBP5Z2sQp-1qqFRQHmry8jMX749cioopCrdyNnquBYnoL9SVfYJuCHIjtWaNePOuFpFIRxMM5ubdbvjI0cVfsPQOR8pF5YmAfllGG2IDEWU"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center">
+<button class="bg-white/95 text-black text-xs font-bold uppercase tracking-wider py-2.5 px-6 rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors w-full">Quick View</button>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/80 dark:bg-black/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:text-primary">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<p class="text-xs font-bold uppercase tracking-wider text-gray-500">The Ordinary</p>
+<h3 class="font-bold text-base leading-tight group-hover:text-primary transition-colors">Niacinamide 10% + Zinc 1%</h3>
+<div class="flex items-center gap-1 my-1">
+<div class="flex text-black dark:text-white">
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-outlined text-[14px]">star</span>
+</div>
+<span class="text-xs text-gray-500 font-medium">(10k+)</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-black">$6.00</span>
+<button class="bg-primary hover:bg-red-700 text-white p-2 rounded-lg transition-colors shadow-sm shadow-red-200 dark:shadow-none">
+<span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group flex flex-col h-full bg-white dark:bg-[#1a0b0c] rounded-xl hover:shadow-xl transition-all duration-300 ease-in-out border border-transparent hover:border-gray-100 dark:hover:border-white/5 p-3">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 dark:bg-white/5 mb-4">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Liquid blush cosmetic with applicator wand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhS-FIatDH4XkeNjLnrQyh3k7khTXhSTCxMeVvES3YCB_Dc63ic8kpywzq8mEZmITw0Oh_UjRZDSYShiBbFd-3mlZwxDFzoPBwr2g88NkT9znQP96kyyWMu1YRH0Tik_tmF5b2f8oXgF6DgErtQWOCHvG4iQM-SwMWxyEfF6r24hSl8AWsAlwQwoElr1ogeDsGl3L7W4V27TgvmvuAWR2CLGtTqmY-YHL8LFGuXbw3ZfzBKyjQlR_YC4tJ-ZP5lcPDt4nJ0iz9wd4"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center">
+<button class="bg-white/95 text-black text-xs font-bold uppercase tracking-wider py-2.5 px-6 rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors w-full">Quick View</button>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/80 dark:bg-black/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:text-primary">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<span class="absolute top-3 left-3 bg-red-800 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm">Only at City carnation </span>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<p class="text-xs font-bold uppercase tracking-wider text-gray-500">Rare Beauty</p>
+<h3 class="font-bold text-base leading-tight group-hover:text-primary transition-colors">Soft Pinch Liquid Blush</h3>
+<div class="flex items-center gap-1 my-1">
+<div class="flex text-black dark:text-white">
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star_half</span>
+</div>
+<span class="text-xs text-gray-500 font-medium">(3.2k)</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-black">$23.00</span>
+<button class="bg-primary hover:bg-red-700 text-white p-2 rounded-lg transition-colors shadow-sm shadow-red-200 dark:shadow-none">
+<span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group flex flex-col h-full bg-white dark:bg-[#1a0b0c] rounded-xl hover:shadow-xl transition-all duration-300 ease-in-out border border-transparent hover:border-gray-100 dark:hover:border-white/5 p-3">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 dark:bg-white/5 mb-4">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Small jar of lip mask or cream" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFawWJqHP74NCi7vu4Fn56AVc4p97Sa_JmBDYg4_IbaNsGa4rQdVvLVY6726sXlKRM5MJ3Qs_VCmgy0lJDSwxFsFE0Bw7p15ii5MgQUqmZh-tHW2pGo-58rea4mlvl2COQgyMnRI0S-xxWxJD0MDJs1ObcLC-RmGbhziOvVB7AcZ8AEGxSCgK66pYSAsC_j8hS2iKTKEB7qz2xH_-qlqyRRZ-Qsu1Od0uNslWCHubibyfzkloII0D_8LgKyKVVdirPA8wWBoq-zZ0"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center">
+<button class="bg-white/95 text-black text-xs font-bold uppercase tracking-wider py-2.5 px-6 rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors w-full">Quick View</button>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/80 dark:bg-black/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:text-primary">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<p class="text-xs font-bold uppercase tracking-wider text-gray-500">Laneige</p>
+<h3 class="font-bold text-base leading-tight group-hover:text-primary transition-colors">Lip Sleeping Mask Intense Hydration</h3>
+<div class="flex items-center gap-1 my-1">
+<div class="flex text-black dark:text-white">
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+</div>
+<span class="text-xs text-gray-500 font-medium">(12k)</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-black">$24.00</span>
+<button class="bg-primary hover:bg-red-700 text-white p-2 rounded-lg transition-colors shadow-sm shadow-red-200 dark:shadow-none">
+<span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group flex flex-col h-full bg-white dark:bg-[#1a0b0c] rounded-xl hover:shadow-xl transition-all duration-300 ease-in-out border border-transparent hover:border-gray-100 dark:hover:border-white/5 p-3">
+<div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 dark:bg-white/5 mb-4">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Luxurious face cream jar with gold lid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsn7fOnUhaqsDY94z8czEwkTIX0Cagsp0Y4grTNsIz8H6d2IwCc2NvKK8cmZzPvgDr2E3oKfnd24Ntu7-Y0E5tvOfeSgG7iRnH6XUoJjJ5Ymn2cCzRdn3W87UGr0309O6DUWzC630UPZ5J5hNNirjKEJWMilbb0JRLPpizlDFHCO_aC54m6CI785KCT49jSqqrGrV9Ml4Wjym6iiwgZFAdI1R0BymHRgloG8lXSX8w2AgN0sLn7uRLGP9sHlqpwoUvDzm4my1lSaY"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center">
+<button class="bg-white/95 text-black text-xs font-bold uppercase tracking-wider py-2.5 px-6 rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors w-full">Quick View</button>
+</div>
+<button class="absolute top-3 right-3 p-2 bg-white/80 dark:bg-black/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:text-primary">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<p class="text-xs font-bold uppercase tracking-wider text-gray-500">Charlotte Tilbury</p>
+<h3 class="font-bold text-base leading-tight group-hover:text-primary transition-colors">Charlotte's Magic Cream</h3>
+<div class="flex items-center gap-1 my-1">
+<div class="flex text-black dark:text-white">
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-filled text-[14px]">star</span>
+<span class="material-symbols-outlined text-[14px]">star_border</span>
+</div>
+<span class="text-xs text-gray-500 font-medium">(890)</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-black">$100.00</span>
+<button class="bg-primary hover:bg-red-700 text-white p-2 rounded-lg transition-colors shadow-sm shadow-red-200 dark:shadow-none">
+<span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex flex-col items-center gap-4">
+<p class="text-sm text-gray-500 font-medium">Showing 6 of 1,240 results</p>
+<div class="w-full max-w-xs h-1 bg-gray-200 rounded-full overflow-hidden">
+<div class="w-1/6 h-full bg-black dark:bg-white rounded-full"></div>
+</div>
+<button class="mt-4 px-10 py-3 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full hover:bg-primary dark:hover:bg-primary hover:border-primary transition-colors">
+                    Load More
+                </button>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="mt-12 border-t border-gray-200 dark:border-white/10 bg-white dark:bg-[#1a0b0c] py-8">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="text-lg font-black tracking-widest text-black dark:text-white">City carnation </span>
+<div class="text-xs text-gray-500 font-medium">© 2024 City carnation  USA, Inc. All rights reserved.</div>
+<div class="flex gap-4 text-gray-500">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">language</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">help</span>
+</div>
+</div>
+</footer>
+</body></html>

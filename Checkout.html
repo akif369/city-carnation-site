@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout - Sephora</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec131e",
+                        "primary-hover": "#c41019",
+                        "background-light": "#ffffff",
+                        "background-off": "#f9f9f9",
+                        "background-dark": "#121212",
+                        "background-dark-card": "#1e1e1e",
+                        "text-main": "#000000",
+                        "text-muted": "#666666",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white font-display overflow-x-hidden antialiased">
+    <!-- Order Success Overlay -->
+<div id="orderSuccess"
+     class="fixed inset-0 bg-black/60 flex items-center justify-center z-[999] hidden">
+  <div class="bg-white dark:bg-background-dark-card rounded-xl p-10 text-center shadow-xl scale-75 opacity-0 transition-all duration-500"
+       id="successCard">
+    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500 flex items-center justify-center animate-bounce">
+      <span class="material-symbols-outlined text-white text-4xl">check</span>
+    </div>
+    <h2 class="text-2xl font-bold mb-2">Order Placed!</h2>
+    <p class="text-gray-500 mb-6">Thank you for shopping with Sephora.</p>
+    <p class="text-sm text-gray-400">Redirecting to homepage…</p>
+  </div>
+</div>
+<header class="sticky top-0 z-50 w-full bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="px-4 md:px-8 lg:px-12 py-4 flex items-center justify-between">
+<a class="flex-shrink-0 flex items-center gap-2 group" href="#">
+<span class="text-2xl md:text-3xl font-bold tracking-[0.1em] text-black dark:text-white group-hover:text-primary transition-colors duration-300">SEPHORA</span>
+</a>
+<div class="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm font-semibold">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span class="hidden sm:inline">Secure Checkout</span>
+</div>
+</div>
+</header>
+<main class="w-full bg-white dark:bg-background-dark pb-20 min-h-screen">
+<div class="max-w-[1200px] mx-auto px-4 md:px-8 pt-8">
+<h1 class="text-2xl md:text-3xl font-bold text-black dark:text-white mb-8">Checkout</h1>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<div class="lg:col-span-7 flex flex-col gap-8">
+<div class="border border-gray-200 dark:border-gray-800 rounded-lg p-6 bg-white dark:bg-background-dark-card">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold text-black dark:text-white flex items-center gap-2">
+<span class="bg-black dark:bg-white text-white dark:text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                                Shipping Address
+                            </h2>
+<button class="text-sm font-bold underline text-gray-500 hover:text-black dark:hover:text-white">Sign in for saved address</button>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="col-span-1">
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="firstName">First Name</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="firstName" placeholder="" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="lastName">Last Name</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="lastName" placeholder="" type="text"/>
+</div>
+<div class="col-span-1 md:col-span-2">
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="address">Address</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="address" placeholder="Street address" type="text"/>
+</div>
+<div class="col-span-1 md:col-span-2">
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="apt">Apt, Suite, Building (Optional)</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="apt" placeholder="" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="zip">Zip Code</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="zip" placeholder="" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="city">City</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="city" placeholder="" type="text"/>
+</div>
+<div class="col-span-1 md:col-span-2">
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="phone">Phone Number</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="phone" placeholder="(555) 555-5555" type="tel"/>
+<p class="text-xs text-gray-500 mt-1">For delivery updates.</p>
+</div>
+</form>
+</div>
+<div class="border border-gray-200 dark:border-gray-800 rounded-lg p-6 bg-white dark:bg-background-dark-card">
+<h2 class="text-lg font-bold text-black dark:text-white flex items-center gap-2 mb-6">
+<span class="bg-black dark:bg-white text-white dark:text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+                            Delivery Method
+                        </h2>
+<div class="space-y-3">
+<label class="flex items-center justify-between border border-primary dark:border-primary bg-red-50 dark:bg-red-900/10 rounded-lg p-4 cursor-pointer transition-colors relative">
+<div class="flex items-center gap-3">
+<input checked="" class="text-primary focus:ring-primary w-5 h-5 border-gray-300" name="delivery" type="radio"/>
+<div>
+<div class="font-bold text-black dark:text-white">Standard Shipping</div>
+<div class="text-sm text-gray-600 dark:text-gray-300">Get it by <span class="font-semibold">Thursday, Oct 24</span></div>
+</div>
+</div>
+<span class="font-bold text-black dark:text-white">FREE</span>
+</label>
+<label class="flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 rounded-lg p-4 cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<input class="text-primary focus:ring-primary w-5 h-5 border-gray-300" name="delivery" type="radio"/>
+<div>
+<div class="font-bold text-black dark:text-white">Flash 2-Day Shipping</div>
+<div class="text-sm text-gray-600 dark:text-gray-300">Get it by <span class="font-semibold">Tuesday, Oct 22</span></div>
+</div>
+</div>
+<span class="font-bold text-black dark:text-white">$10.95</span>
+</label>
+<label class="flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 rounded-lg p-4 cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<input class="text-primary focus:ring-primary w-5 h-5 border-gray-300" name="delivery" type="radio"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-black dark:text-white">Buy Online, Pick Up In Store</span>
+<span class="bg-gray-100 dark:bg-gray-800 text-xs px-2 py-0.5 rounded font-semibold text-gray-600 dark:text-gray-300">New</span>
+</div>
+<div class="text-sm text-gray-600 dark:text-gray-300">Available at <span class="underline">Sephora 5th Ave</span></div>
+</div>
+</div>
+<span class="font-bold text-black dark:text-white">FREE</span>
+</label>
+</div>
+</div>
+<div class="border border-gray-200 dark:border-gray-800 rounded-lg p-6 bg-white dark:bg-background-dark-card">
+<h2 class="text-lg font-bold text-black dark:text-white flex items-center gap-2 mb-6">
+<span class="bg-black dark:bg-white text-white dark:text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
+                            Payment
+                        </h2>
+<div class="flex gap-4 mb-6 border-b border-gray-200 dark:border-gray-700">
+<button class="pb-3 border-b-2 border-black dark:border-white font-bold text-sm">Credit Card</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-black dark:hover:text-gray-300 font-medium text-sm transition-colors">PayPal</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-black dark:hover:text-gray-300 font-medium text-sm transition-colors">Klarna</button>
+</div>
+<form class="space-y-4 max-w-md">
+<div>
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="cardNumber">Card Number</label>
+<div class="relative">
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3 pr-10" id="cardNumber" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-gray-400">credit_card</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="expDate">Expiration Date</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="expDate" placeholder="MM/YY" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="cvv">Security Code</label>
+<div class="relative">
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="cvv" placeholder="123" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-gray-400 text-[18px] cursor-help">help</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase" for="cardName">Name on Card</label>
+<input class="w-full border-gray-300 dark:border-gray-600 rounded bg-transparent focus:ring-1 focus:ring-primary focus:border-primary text-sm p-3" id="cardName" placeholder="" type="text"/>
+</div>
+<div class="flex items-start gap-2 pt-2">
+<input class="rounded border-gray-300 text-black focus:ring-primary mt-1" id="saveCard" type="checkbox"/>
+<label class="text-sm text-gray-600 dark:text-gray-300" for="saveCard">Save this card for future purchases</label>
+</div>
+</form>
+</div>
+</div>
+<div class="lg:col-span-5">
+<div class="sticky top-24 bg-gray-50 dark:bg-background-dark-card rounded-lg p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-bold text-lg text-black dark:text-white">Order Summary</h2>
+<a class="text-xs underline text-gray-500 hover:text-black dark:hover:text-white" href="#">Edit Cart</a>
+</div>
+<div class="space-y-4 mb-6 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+<div class="flex gap-4">
+<div class="w-16 h-20 bg-white rounded border border-gray-200 dark:border-gray-700 shrink-0 overflow-hidden">
+<img alt="Blush" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8v4GOMX0pppnQynWqvlxhBVF3w6RaFEHidcngfFpPeA2PqtRwISrf2166ZzFlvWAzEy-L8LxwInYI27-6zpe4LwpGB55Wwf3ajpp8NiXKPBtvCg5RAchf4g8Iqg8UFd8e46IZI3dxT1bgOT67pQ4pcAuiZkYSkJn3JRTPjzQMEU1-m6jFSiblRdVxmaqrAsh9BtTxMrrv1s6rSgqCL8wzHa6fRuDsjvvt6Ke7_KL2rtr90cmJ_F-1L6OzGkOxWB_fgfsCqc2sAtg"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-bold text-sm text-black dark:text-white">Rare Beauty</p>
+<p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-1">Soft Pinch Liquid Blush</p>
+<p class="text-xs text-gray-500 mt-0.5">Color: Happy</p>
+</div>
+<span class="font-bold text-sm text-black dark:text-white">$23.00</span>
+</div>
+<p class="text-xs text-gray-500 mt-2">Qty: 1</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-16 h-20 bg-white rounded border border-gray-200 dark:border-gray-700 shrink-0 overflow-hidden">
+<img alt="Mascara" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8v4GOMX0pppnQynWqvlxhBVF3w6RaFEHidcngfFpPeA2PqtRwISrf2166ZzFlvWAzEy-L8LxwInYI27-6zpe4LwpGB55Wwf3ajpp8NiXKPBtvCg5RAchf4g8Iqg8UFd8e46IZI3dxT1bgOT67pQ4pcAuiZkYSkJn3JRTPjzQMEU1-m6jFSiblRdVxmaqrAsh9BtTxMrrv1s6rSgqCL8wzHa6fRuDsjvvt6Ke7_KL2rtr90cmJ_F-1L6OzGkOxWB_fgfsCqc2sAtg"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-bold text-sm text-black dark:text-white">Sephora Collection</p>
+<p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-1">Size Up Volumizing Mascara</p>
+<p class="text-xs text-gray-500 mt-0.5">Color: Ultra Black</p>
+</div>
+<span class="font-bold text-sm text-black dark:text-white">$12.00</span>
+</div>
+<p class="text-xs text-gray-500 mt-2">Qty: 1</p>
+</div>
+</div>
+</div>
+<div class="border-t border-b border-gray-200 dark:border-gray-700 py-4 mb-4">
+<label class="block text-xs font-bold text-black dark:text-white mb-2">Promo or Reward Code</label>
+<div class="flex gap-2">
+<input class="flex-1 border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-background-dark text-sm px-3 py-2 focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Enter code" type="text"/>
+<button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-black dark:text-white text-xs font-bold px-4 rounded transition-colors">APPLY</button>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 rounded p-3 mb-6 flex items-start gap-3">
+<div class="p-1 bg-black text-white rounded-full">
+<span class="material-symbols-outlined text-[16px] block">loyalty</span>
+</div>
+<div>
+<p class="text-sm font-bold text-black dark:text-white">Beauty Insider</p>
+<p class="text-xs text-gray-600 dark:text-gray-400">You will earn <span class="font-bold text-black dark:text-white">35 points</span> with this purchase.</p>
+</div>
+</div>
+<div class="space-y-2 text-sm text-gray-600 dark:text-gray-300 mb-6">
+<div class="flex justify-between">
+<span>Merchandise Subtotal</span>
+<span class="font-medium text-black dark:text-white">$35.00</span>
+</div>
+<div class="flex justify-between">
+<span>Shipping &amp; Handling</span>
+<span class="font-bold text-black dark:text-white">FREE</span>
+</div>
+<div class="flex justify-between">
+<span>Estimated Tax</span>
+<span class="font-medium text-black dark:text-white">$2.80</span>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-4 mt-2 flex justify-between items-end">
+<span class="font-bold text-lg text-black dark:text-white">Estimated Total</span>
+<span class="font-bold text-2xl text-black dark:text-white">$37.80</span>
+</div>
+</div>
+<button id="placeOrderBtn"
+        class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-4 rounded-full shadow-lg transition-transform active:scale-[0.99] flex items-center justify-center gap-2">
+    Place Order
+</button>
+<p class="text-xs text-center text-gray-500 mt-4 leading-tight">
+                            By clicking “Place Order”, you agree to our <a class="underline" href="#">Terms of Use</a> and <a class="underline" href="#">Privacy Policy</a>.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-black text-white pt-16 pb-8 border-t border-gray-800">
+<div class="max-w-[1440px] mx-auto px-4 md:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div class="flex flex-col gap-6">
+<h3 class="font-bold text-lg">About Sephora</h3>
+<ul class="flex flex-col gap-3 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Social Impact</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Supply Chain Transparency</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Affiliates</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sephora Events</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-6">
+<h3 class="font-bold text-lg">My Sephora</h3>
+<ul class="flex flex-col gap-3 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Beauty Insider</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sephora Credit Card</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Community Profile</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Order Status</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Purchase History</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Account Settings</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-6">
+<h3 class="font-bold text-lg">Help &amp; FAQs</h3>
+<ul class="flex flex-col gap-3 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Customer Service</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Returns &amp; Exchanges</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Delivery and Pickup Options</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Shipping</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Billing</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-6">
+<h3 class="font-bold text-lg">Stay in Touch</h3>
+<p class="text-sm text-gray-400">Sign up for the latest news, offers and styles.</p>
+<div class="flex gap-2">
+<input class="bg-gray-900 border-none rounded-lg px-4 py-3 text-sm w-full focus:ring-1 focus:ring-white" placeholder="Email Address" type="email"/>
+<button class="bg-white text-black font-bold px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors">
+                            Sign Up
+                        </button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+<p>© 2024 Sephora USA, Inc. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Use</a>
+<a class="hover:text-white" href="#">Accessibility</a>
+<a class="hover:text-white" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+  const placeOrderBtn = document.getElementById("placeOrderBtn");
+  const orderSuccess = document.getElementById("orderSuccess");
+  const successCard = document.getElementById("successCard");
+
+  placeOrderBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Show overlay
+    orderSuccess.classList.remove("hidden");
+
+    // Trigger animation
+    setTimeout(() => {
+      successCard.classList.remove("scale-75", "opacity-0");
+      successCard.classList.add("scale-100", "opacity-100");
+    }, 100);
+
+    // Redirect after 3 seconds
+    setTimeout(() => {
+      window.location.href = "Homepage.html";
+    }, 3000);
+  });
+</script>
+
+
+</body></html>
